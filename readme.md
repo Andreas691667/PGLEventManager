@@ -27,3 +27,5 @@ After having inserted a couple of items, you can view the different tables in th
 - Show all data in some table, for instance users: ```SELECT * FROM users;``` 
 
 Alternatively, open the program ```HeidiSQL``` installed together with mariadb for a more elegant view. 
+
+To auto-generate class diagram using pyreverse type: ```pyreverse src -f ALL -m n -d ./UML_Diagrams```. 

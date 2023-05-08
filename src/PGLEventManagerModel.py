@@ -1,12 +1,14 @@
 import mysql.connector as mysql
 import json
+import warnings
 
 
 class PGLEventManagerModel:
+
     """Model to store timestamp events in mysql database.
     The model handles all interaction with the database. """
 
-    # table names
+    # tab½½le names
     __USERS_TABLE_NAME = "users"
     __JOURNEY_TABLE_NAME = "journey"
     __PRODUCT_TABLE_NAME = "products"
@@ -387,7 +389,7 @@ class PGLEventManagerModel:
                 return 'INVALID', user
 
         except mysql.Error as err:
-            Warning.warn("Failed to validate user")
+            warnings.warn("Failed to validate user with error: " + str(err))
             return 'INVALID', user
 
 # endregion

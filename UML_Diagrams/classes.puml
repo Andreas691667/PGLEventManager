@@ -1,0 +1,66 @@
+@startuml classes
+set namespaceSeparator none
+class "PGLEventManagerController" as src.PGLEventManagerController.PGLEventManagerController {
+  __MAIN_TOPIC : str
+  __PGLmodel
+  __REQUEST_CREATE_PRODUCT_TOPIC
+  __REQUEST_EMERGENCY_TOPIC
+  __REQUEST_GET_EMERGENCIES_TOPIC
+  __REQUEST_GET_EVENTS_TOPIC
+  __REQUEST_NEW_DEVICE_TOPIC
+  __REQUEST_STORE_EVENT_IN_DB_TOPIC
+  __REQUEST_STORE_USER_IN_DB_TOPIC
+  __REQUEST_TOPICS
+  __REQUEST_VALIDATE_USER_TOPIC
+  __RESPONSE_EMERGENCY_TOPIC
+  __RESPONSE_SEND_EVENTS_TOPIC
+  __RESPONSE_VALIDATE_TOPIC
+  __events_queue : Queue
+  __mqtt_client : Client
+  __mqtt_host : str
+  __mqtt_port : int
+  __stop___worker : Event
+  __subscriber_thread : Thread
+  __init__(mqtt_host: str, model: PGLEventManagerModel, mqtt_port: int) -> None
+  __onConnect(client, userdata, flags, rc, _) -> None
+  __onDisconnect(client, userdata, rc, _) -> None
+  __onMessage(client, userdata, message: MQTTMessage) -> None
+  __worker() -> None
+  startListening() -> None
+  stopListening() -> None
+}
+class "PGLEventManagerModel" as src.PGLEventManagerModel.PGLEventManagerModel {
+  __DEVICES_TABLE_DESCRIPTION : str
+  __DEVICES_TABLE_NAME : str
+  __EMERGENCY_TABLE_DESCRIPTION : str
+  __EMERGENCY_TABLE_NAME : str
+  __JOURNEY_TABLE_DESCRIPTION : str
+  __JOURNEY_TABLE_NAME : str
+  __PGL_db_connection : CMySQLConnection, NoneType, MySQLConnection
+  __PRODUCTS_TABLE_DESCRIPTION : str
+  __PRODUCT_TABLE_NAME : str
+  __TABLE_DESCRIPTIONS : list
+  __USERS_TABLE_DESCRIPTION : str
+  __USERS_TABLE_NAME : str
+  __database_name : str
+  __host
+  __password : str
+  __user : str
+  __createDatabase() -> None
+  __createProduct(user: str, device: str, cursor)
+  __deviceExists(device_id) -> bool
+  __eventsToJson(data, row_headers_count) -> str
+  __init__(host, database: str, user: str, password: str) -> None
+  __userExists(username) -> bool
+  connectDB() -> None
+  disconnectDB() -> None
+  getEmergencies(payload: str) -> str
+  getJourneys(payload: str) -> str
+  storeDevice(device_id: str) -> None
+  storeEmergency(payload: str) -> None
+  storeJourney(payload: str) -> None
+  storeProduct(payload: str) -> str
+  storeUser(credentials: str) -> str
+  validateUser(credentials: str) -> str
+}
+@enduml
