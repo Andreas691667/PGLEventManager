@@ -28,4 +28,4 @@ After having inserted a couple of items, you can view the different tables in th
 
 Alternatively, open the program ```HeidiSQL``` installed together with mariadb for a more elegant view. 
 
-To auto-generate class diagram using pyreverse type: ```pyreverse src -f ALL -m n -d ./UML_Diagrams```. 
+To auto-generate class diagram using pyreverse type: ``` pyreverse src -f ALL -m n -d UML_Diagrams -o puml```. 
