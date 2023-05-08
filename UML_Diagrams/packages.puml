@@ -1,14 +1,9 @@
 @startuml packages
 set namespaceSeparator none
-package "src" as src {
-}
-package "src.PGLEventManagerController" as src.PGLEventManagerController {
-}
-package "src.PGLEventManagerMain" as src.PGLEventManagerMain {
-}
-package "src.PGLEventManagerModel" as src.PGLEventManagerModel {
-}
-src.PGLEventManagerController --> src.PGLEventManagerModel
-src.PGLEventManagerMain --> src.PGLEventManagerController
-src.PGLEventManagerMain --> src.PGLEventManagerModel
+package "PGLEventManagerController" as PGLEventManagerController
+package "PGLEventManagerMain" as PGLEventManagerMain
+package "PGLEventManagerModel" as PGLEventManagerModel
+PGLEventManagerController --> PGLEventManagerModel
+PGLEventManagerMain *--> PGLEventManagerController
+PGLEventManagerMain *--> PGLEventManagerModel
 @enduml

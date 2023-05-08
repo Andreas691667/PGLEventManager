@@ -1,5 +1,6 @@
 @startuml classes
 set namespaceSeparator none
+together {
 class "PGLEventManagerController" as src.PGLEventManagerController.PGLEventManagerController {
   __MAIN_TOPIC : str
   __PGLmodel
@@ -63,8 +64,10 @@ class "PGLEventManagerModel" as src.PGLEventManagerModel.PGLEventManagerModel {
   storeUser(credentials: str) -> str
   validateUser(credentials: str) -> str
 }
+}
 
-src.PGLEventManagerController.PGLEventManagerController -->  src.PGLEventManagerModel.PGLEventManagerModel
+src.PGLEventManagerController.PGLEventManagerController ->  src.PGLEventManagerModel.PGLEventManagerModel
 PGLEventManagerMain *--> src.PGLEventManagerController.PGLEventManagerController
 PGLEventManagerMain *--> src.PGLEventManagerModel.PGLEventManagerModel
+
 @enduml
