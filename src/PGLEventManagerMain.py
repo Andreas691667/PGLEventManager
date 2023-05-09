@@ -2,6 +2,7 @@ from threading import Event
 import keyboard
 from PGLEventManagerModel import PGLEventManagerModel
 from PGLEventManagerController import PGLEventManagerController
+from time import sleep
 
 def main():
     print("Press 'x' to terminate")
@@ -13,7 +14,7 @@ def main():
 
     try:
         while True:
-            pass
+            sleep(2)
 
     except KeyboardInterrupt:
         print("Exiting")

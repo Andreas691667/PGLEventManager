@@ -51,8 +51,8 @@ class PGLEventManagerModel:
                                           (device_id VARCHAR(255) NOT NULL,
                                           PRIMARY KEY (device_id)) """
 
-    __TABLE_DESCRIPTIONS = [__USERS_TABLE_DESCRIPTION, __JOURNEY_TABLE_DESCRIPTION,
-                            __PRODUCTS_TABLE_DESCRIPTION, __DEVICES_TABLE_DESCRIPTION, __EMERGENCY_TABLE_DESCRIPTION]
+    __TABLE_DESCRIPTIONS = [__USERS_TABLE_DESCRIPTION, __DEVICES_TABLE_DESCRIPTION, __JOURNEY_TABLE_DESCRIPTION,
+                            __PRODUCTS_TABLE_DESCRIPTION, __EMERGENCY_TABLE_DESCRIPTION]
 
     def __init__(self, host, database: str, user: str, password: str) -> None:
         self.__host = host
