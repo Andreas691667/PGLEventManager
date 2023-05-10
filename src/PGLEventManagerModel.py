@@ -196,7 +196,8 @@ class PGLEventManagerModel:
             cursor.close()
 
         except mysql.Error as err:
-            print(f'Failed to insert emergency into database with error: {err}')
+            print(
+                f'Failed to insert emergency into database with error: {err}')
 
     # store a new user in the database with the given credentials
     def storeUser(self, credentials: str) -> str:
@@ -267,7 +268,7 @@ class PGLEventManagerModel:
                 else:
                     print(f'Product already exists for resident-user: {user}')
                     return 'INVALID', user
-                
+
             # invalid usertype or user not found
             else:
                 return 'INVALID', user
@@ -291,7 +292,8 @@ class PGLEventManagerModel:
     # get journeys from database corresponding to the given payload
     def getJourneys(self, payload: str) -> str:
         payload_in = tuple(payload.split(';')[:-1])  # get payload as tuple
-        username = payload_in[0]                     # get username from payload
+        # get username from payload
+        username = payload_in[0]
 
         if len(payload_in) > 1:
             # get device_id from payload if available
@@ -308,7 +310,8 @@ class PGLEventManagerModel:
                                         (SELECT user_id FROM {self.__USERS_TABLE_NAME} 
                                             WHERE username = '{username}')"""
             cursor.execute(query)
-            all_data = cursor.fetchall()    # fetch all data in format [(row1), (row2), ... row(row_headers)]
+            # fetch all data in format [(row1), (row2), ... row(row_headers)]
+            all_data = cursor.fetchall()
             # this will extract row headers
             row_headers = [x[0] for x in cursor.description]
             return self.__eventsToJson(all_data, row_headers), username
@@ -373,11 +376,8 @@ class PGLEventManagerModel:
             payload_in = tuple(credentials.split(';')[:-1])
             user = payload_in[0]
             pass_ = payload_in[1]
-            client_id = payload_in[2]
-
             cursor = self.__PGL_db_connection.cursor()
             query = f'SELECT COUNT(*) FROM {self.__USERS_TABLE_NAME} WHERE username = "{user}" AND password = "{pass_}"'
-
             cursor.execute(query)
             rows = cursor.fetchone()
             count = rows[0]
