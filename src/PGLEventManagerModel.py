@@ -1,6 +1,6 @@
-import mysql.connector as mysql
 import json
 import warnings
+import mysql.connector as mysql
 
 
 class PGLEventManagerModel:

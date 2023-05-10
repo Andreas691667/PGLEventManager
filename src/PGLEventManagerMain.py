@@ -1,8 +1,6 @@
-from threading import Event
-import keyboard
+from time import sleep
 from PGLEventManagerModel import PGLEventManagerModel
 from PGLEventManagerController import PGLEventManagerController
-from time import sleep
 
 def main():
     print("Press 'x' to terminate")
