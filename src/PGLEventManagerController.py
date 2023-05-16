@@ -158,12 +158,12 @@ class PGLEventManagerController:
                                 f'{self.__RESPONSE_VALIDATE_TOPIC}/{user}/response', succ)
                             print(f'Validated user: {succ}')
 
-                        # return all journies from database for given user
+                        # return all journeys from database for given user
                         case self.__REQUEST_GET_EVENTS_TOPIC:
                             # retrieve data from database using the model
-                            user = mqtt_message.payload.decode("utf-8")
-                            data, user = self.__PGLmodel.getJourneys(user)
-                            # publish the data on the proper topic
+                            payload = mqtt_message.payload.decode("utf-8")
+                            data, user = self.__PGLmodel.getJourneys(payload)
+                            # publish the data on the response send events topic
                             self.__mqtt_client.publish(
                                 f"{self.__RESPONSE_SEND_EVENTS_TOPIC}/{user}/response", data)
                             print("Published data")
