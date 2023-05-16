@@ -4,9 +4,7 @@ import mysql.connector as mysql
 
 
 class PGLEventManagerModel:
-
-    """Model to store timestamp events in mysql database.
-    The model handles all interaction with the database. """
+    """Model of the PGLEventManager application. Handles the database connection and data storage."""
 
     # tab½½le names
     __USERS_TABLE_NAME = "users"
