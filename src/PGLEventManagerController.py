@@ -62,7 +62,6 @@ class PGLEventManagerController:
 
     # stop subscriber thread and disconnect the model
     def stopListening(self) -> None:
-
         # Disconnect from MQTT when events queue is empty
         while not self.__events_queue.empty():
             pass

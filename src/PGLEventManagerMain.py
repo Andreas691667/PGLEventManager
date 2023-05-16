@@ -3,6 +3,7 @@ from PGLEventManagerModel import PGLEventManagerModel
 from PGLEventManagerController import PGLEventManagerController
 
 def main():
+    """Main function of the PGLEventManager application."""
     print("Press 'x' to terminate")
 
     model = PGLEventManagerModel("localhost", "PGL", "PGL", "PGL")
