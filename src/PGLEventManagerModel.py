@@ -14,14 +14,14 @@ class PGLEventManagerModel:
     __EMERGENCY_TABLE_NAME = "emergency"
 
     # table descriptions
-    __USERS_TABLE_DESCRIPTION: str = """users 
+    __USERS_TABLE_DESCRIPTION: str = """users
                                        (user_id int NOT NULL AUTO_INCREMENT,
                                         username VARCHAR(320) UNIQUE NOT NULL,
                                         password VARCHAR(255) NOT NULL, 
                                         usertype VARCHAR(30) NOT NULL, 
                                         PRIMARY KEY(user_id) )"""
 
-    __JOURNEY_TABLE_DESCRIPTION: str = """journey 
+    __JOURNEY_TABLE_DESCRIPTION: str = """journey
                                         (journey_id int NOT NULL AUTO_INCREMENT, 
                                         datetime VARCHAR(30) NOT NULL, 
                                         rtt VARCHAR(30) NOT NULL, 
