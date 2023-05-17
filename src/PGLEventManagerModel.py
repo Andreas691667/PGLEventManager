@@ -207,7 +207,7 @@ class PGLEventManagerModel:
             # if no duplicates, insert in table
             if not self.__userExists(username):
                 cursor.reset()
-                query = f"INSERT INTO {self.__USERS_TABLE_NAME} (username, password, usertype) VALUES (%s, %s, %s)"
+                query = f"INSERT INTO {self.__USERS_TABLE_NAME} (username, password, usertype) VALUES (%s, MD5(%s), %s)"
                 cursor.execute(query, val)
                 self.__PGL_db_connection.commit()
                 print("Stored user in DB")
@@ -375,7 +375,7 @@ class PGLEventManagerModel:
             user = payload_in[0]
             pass_ = payload_in[1]
             cursor = self.__PGL_db_connection.cursor()
-            query = f'SELECT COUNT(*) FROM {self.__USERS_TABLE_NAME} WHERE username = "{user}" AND password = "{pass_}"'
+            query = f"SELECT COUNT(*) FROM {self.__USERS_TABLE_NAME} WHERE username = '{user}' AND password = MD5('{pass_}')"
             cursor.execute(query)
             rows = cursor.fetchone()
             count = rows[0]
